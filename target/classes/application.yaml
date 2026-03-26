@@ -1,5 +1,42 @@
-spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+spring:
+  datasource:
+    # 127.0.0.1 evita problemas de resolucion localhost/IPv6 en Windows.
+    # Si el contenedor publica otro puerto (ej. -p 5433:5432), cambia el puerto o usa:
+    # SPRING_DATASOURCE_URL=jdbc:postgresql://127.0.0.1:5433/postgres?sslmode=disable
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5432/postgres?sslmode=disable}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:sa}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+  sql:
+    init:
+      mode: never
 
-camunda.bpm.admin-user:
-  id: demo
-  password: demo
+# Si la base NO tiene tablas Camunda y schema-update es false, el arranque falla.
+# true: el motor crea/actualiza el esquema al iniciar (recomendado en local).
+# false: debes haber ejecutado antes identity.sql + engine.sql (y opcional extra-indexes.sql).
+camunda.bpm:
+  admin-user:
+    id: demo
+    password: demo
+  database:
+    schema-update: true
+    jdbc-batch-processing: true
+
+logging:
+  level:
+    org.camunda: INFO
+    org.springframework.boot: INFO
+
+---
+# Perfil opcional: esquema creado solo con scripts SQL (sin auto DDL del motor).
+spring:
+  config:
+    activate:
+      on-profile: manual-schema
+camunda:
+  bpm:
+    database:
+      schema-update: false
