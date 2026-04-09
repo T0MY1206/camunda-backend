@@ -1,6 +1,13 @@
 # camunda-backend
 
-Spring Boot + Camunda 7.24 (REST + Webapps). Base de datos: **PostgreSQL**.
+Spring Boot + Camunda 7.24 (motor embebido + Cockpit/Tasklist Webapps). APIs REST propias en Spring MVC (sin `camunda-bpm-spring-boot-starter-rest`). Base de datos: **PostgreSQL**.
+
+## APIs y documentación
+
+- **Paridad Camunda (REST 7.24 orientativa):** prefijo `GET/POST/DELETE ... /api/v1/camunda/**` (despliegues, definiciones, instancias, tareas, historial, jobs, identidad, DMN, etc.).
+- **Extensiones propias:** prefijo `/api/v1/custom/**` (ejemplo: `GET /api/v1/custom/status`).
+- **OpenAPI / Swagger UI:** SpringDoc — tras arrancar, documentación en `/v3/api-docs` y UI en `/swagger-ui.html` (grupos **camunda-parity** y **custom**).
+- Guía narrativa de endpoints y flujos: [docs/api-endpoints-guia.md](docs/api-endpoints-guia.md).
 
 ## Requisitos
 
