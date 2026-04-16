@@ -1,0 +1,5 @@
+com/tto/workflow/api/v1/custom/CamundaParityOpenApiControllerTest.class
+com/tto/workflow/api/v1/custom/CustomStatusControllerTest.class
+com/tto/workflow/api/v1/camunda/deployment/DeploymentControllerTest.class
+com/tto/workflow/api/v1/custom/CamundaParityMatrixControllerTest.class
+com/tto/workflow/api/v1/camunda/processdefinition/ProcessDefinitionControllerTest.class

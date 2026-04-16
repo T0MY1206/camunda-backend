@@ -1,0 +1,89 @@
+{
+  "initialTotal": 399,
+  "initialOk": 386,
+  "initialFail": 13,
+  "fixedAfterRetest": 0,
+  "finalOk": 386,
+  "finalFail": 13,
+  "finalCoveragePct": 96.74,
+  "remainingFailures": [
+    {
+      "method": "GET",
+      "path": "/deployment/{id}/resources/{resourceId}/data",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"no resource found with id 'dummy' in deployment '7d9f3d49-39ce-11f1-9c0a-00155d69e740': resource is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/execution/{id}/localVariables",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/execution/{id}/localVariables/{varName}",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot delete execution variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/execution/{id}/localVariables/{varName}",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot get execution variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/execution/{id}/localVariables/{varName}/data",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot get execution variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "PUT",
+      "path": "/group/{id}/members/{userId}",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"No group found with id '7d9f3d49-39ce-11f1-9c0a-00155d69e740'.: group is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/{id}/variables",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/process-instance/{id}/variables/{varName}",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot delete process instance variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/{id}/variables/{varName}",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot get process instance variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/{id}/variables/{varName}/data",
+      "status": 500,
+      "sample": "{\"type\":\"RestException\",\"message\":\"Cannot get process instance variable dummy: execution 7d9f3d49-39ce-11f1-9c0a-00155d69e740 doesn't exist: execution is null\",\"code\":0}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/task/{id}",
+      "status": 500,
+      "sample": "{\"type\":\"ProcessEngineException\",\"message\":\"The task cannot be deleted because is part of a running process\",\"code\":0}"
+    },
+    {
+      "method": "PUT",
+      "path": "/tenant/{id}/group-members/{groupId}",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"No tenant found with id '7d9f3d49-39ce-11f1-9c0a-00155d69e740'.: tenant is null\",\"code\":0}"
+    },
+    {
+      "method": "PUT",
+      "path": "/tenant/{id}/user-members/{userId}",
+      "status": 500,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"No tenant found with id '7d9f3d49-39ce-11f1-9c0a-00155d69e740'.: tenant is null\",\"code\":0}"
+    }
+  ]
+}
