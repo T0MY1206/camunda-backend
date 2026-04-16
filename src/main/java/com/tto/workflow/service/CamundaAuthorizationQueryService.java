@@ -17,7 +17,7 @@ public class CamundaAuthorizationQueryService {
   }
 
   public List<Map<String, String>> list(Integer firstResult, Integer maxResults) {
-    AuthorizationQuery q = authorizationService.createAuthorizationQuery().orderByAuthorizationId().asc();
+    AuthorizationQuery q = authorizationService.createAuthorizationQuery();
     int first = firstResult != null ? firstResult : 0;
     int max = maxResults != null ? maxResults : 10;
     return q.listPage(first, max).stream().map(this::toBrief).toList();
@@ -27,7 +27,7 @@ public class CamundaAuthorizationQueryService {
     return Map.of(
         "id", a.getId() != null ? a.getId() : "",
         "type",
-        a.getAuthorizationType() != null ? String.valueOf(a.getAuthorizationType()) : "",
-        "resourceType", a.getResourceType() != null ? String.valueOf(a.getResourceType()) : "");
+        String.valueOf(a.getAuthorizationType()),
+        "resourceType", String.valueOf(a.getResourceType()));
   }
 }

@@ -4,7 +4,7 @@ import com.tto.workflow.api.v1.common.CamundaNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.CaseService;
 import org.camunda.bpm.engine.runtime.CaseExecution;
 import org.camunda.bpm.engine.runtime.CaseExecutionQuery;
 import org.springframework.stereotype.Service;
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CamundaCaseService {
 
-  private final RuntimeService runtimeService;
+  private final CaseService caseService;
 
-  public CamundaCaseService(RuntimeService runtimeService) {
-    this.runtimeService = runtimeService;
+  public CamundaCaseService(CaseService caseService) {
+    this.caseService = caseService;
   }
 
   public List<Map<String, String>> listCaseExecutions(String caseInstanceId, Integer firstResult, Integer maxResults) {
-    CaseExecutionQuery q = runtimeService.createCaseExecutionQuery().orderByCaseExecutionId().asc();
+    CaseExecutionQuery q = caseService.createCaseExecutionQuery().orderByCaseExecutionId().asc();
     if (caseInstanceId != null && !caseInstanceId.isBlank()) {
       q.caseInstanceId(caseInstanceId);
     }
@@ -32,7 +32,7 @@ public class CamundaCaseService {
   }
 
   public Map<String, String> getCaseExecution(String id) {
-    CaseExecution ce = runtimeService.createCaseExecutionQuery().caseExecutionId(id).singleResult();
+    CaseExecution ce = caseService.createCaseExecutionQuery().caseExecutionId(id).singleResult();
     if (ce == null) {
       throw new CamundaNotFoundException("Case execution " + id + " does not exist");
     }

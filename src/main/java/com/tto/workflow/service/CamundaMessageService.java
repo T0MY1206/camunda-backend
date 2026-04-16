@@ -4,8 +4,8 @@ import com.tto.workflow.api.v1.dto.camunda.MessageCorrelationDto;
 import com.tto.workflow.api.v1.dto.camunda.VariableValueDto;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.MessageCorrelationBuilder;
-import org.camunda.bpm.engine.variable.VariableValue;
 import org.camunda.bpm.engine.variable.Variables;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +39,7 @@ public class CamundaMessageService {
     b.correlate();
   }
 
-  private VariableValue<?> toVariableValue(VariableValueDto v) {
+  private TypedValue toVariableValue(VariableValueDto v) {
     String type = v.type() != null ? v.type() : "String";
     return switch (type) {
       case "Integer" -> Variables.integerValue(v.value() != null ? ((Number) v.value()).intValue() : null);
@@ -48,7 +48,7 @@ public class CamundaMessageService {
       case "Boolean" -> Variables.booleanValue((Boolean) v.value());
       case "Short" -> Variables.shortValue(v.value() != null ? ((Number) v.value()).shortValue() : null);
       case "Date" -> Variables.dateValue(v.value() instanceof java.util.Date d ? d : null);
-      case "Object" -> Variables.objectValue(v.value());
+      case "Object" -> Variables.objectValue(v.value()).create();
       default -> Variables.stringValue(v.value() != null ? v.value().toString() : null);
     };
   }

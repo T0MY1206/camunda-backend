@@ -18,7 +18,7 @@ public class OpenApiConfig {
             new Info()
                 .title("Camunda backend")
                 .description(
-                    "APIs propias: paridad con la REST 7.24 bajo /api/v1/camunda y extensiones bajo /api/v1/custom.")
+                    "APIs propias y paridad Camunda 7.24. Especificación de paridad disponible en /v3/api-docs/camunda-parity.")
                 .version("1.0.0"))
         .servers(List.of(new Server().url("/").description("Servidor actual")));
   }
@@ -27,7 +27,7 @@ public class OpenApiConfig {
   public GroupedOpenApi camundaParityApi() {
     return GroupedOpenApi.builder()
         .group("camunda-parity")
-        .displayName("API Camunda (paridad)")
+        .displayName("API Camunda (controllers locales)")
         .pathsToMatch("/api/v1/camunda/**")
         .build();
   }

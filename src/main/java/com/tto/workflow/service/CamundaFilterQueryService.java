@@ -17,7 +17,7 @@ public class CamundaFilterQueryService {
   }
 
   public List<Map<String, String>> list(Integer firstResult, Integer maxResults) {
-    FilterQuery q = filterService.createFilterQuery().orderByName().asc();
+    FilterQuery q = filterService.createFilterQuery();
     int first = firstResult != null ? firstResult : 0;
     int max = maxResults != null ? maxResults : 10;
     return q.listPage(first, max).stream().map(this::toBrief).toList();

@@ -32,13 +32,14 @@ public class CamundaEngineInfoService {
   }
 
   public Map<String, Long> metrics(String tableName) {
+    Map<String, Long> tableCount = managementService.getTableCount();
     if (tableName != null && !tableName.isBlank()) {
-      return Map.of(tableName, managementService.getTableCount(tableName));
+      return Map.of(tableName, tableCount.getOrDefault(tableName, 0L));
     }
     return Map.of(
-        "ACT_RU_EXECUTION", managementService.getTableCount("ACT_RU_EXECUTION"),
-        "ACT_RU_TASK", managementService.getTableCount("ACT_RU_TASK"),
-        "ACT_HI_PROCINST", managementService.getTableCount("ACT_HI_PROCINST"));
+        "ACT_RU_EXECUTION", tableCount.getOrDefault("ACT_RU_EXECUTION", 0L),
+        "ACT_RU_TASK", tableCount.getOrDefault("ACT_RU_TASK", 0L),
+        "ACT_HI_PROCINST", tableCount.getOrDefault("ACT_HI_PROCINST", 0L));
   }
 
   public String schemaVersion() {

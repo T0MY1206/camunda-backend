@@ -10,8 +10,8 @@ import java.util.Map;
 import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.task.TaskQuery;
-import org.camunda.bpm.engine.variable.VariableValue;
 import org.camunda.bpm.engine.variable.Variables;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -89,7 +89,7 @@ public class CamundaTaskService {
     return map;
   }
 
-  private VariableValue<?> toVariableValue(VariableValueDto v) {
+  private TypedValue toVariableValue(VariableValueDto v) {
     String type = v.type() != null ? v.type() : "String";
     return switch (type) {
       case "Integer" -> Variables.integerValue(v.value() != null ? ((Number) v.value()).intValue() : null);
@@ -99,7 +99,7 @@ public class CamundaTaskService {
       case "Short" -> Variables.shortValue(v.value() != null ? ((Number) v.value()).shortValue() : null);
       case "Date" -> Variables.dateValue(
           v.value() instanceof java.util.Date d ? d : null);
-      case "Object" -> Variables.objectValue(v.value());
+      case "Object" -> Variables.objectValue(v.value()).create();
       default -> Variables.stringValue(v.value() != null ? v.value().toString() : null);
     };
   }

@@ -69,7 +69,7 @@ public class CamundaHistoryQueryService {
 
   public List<HistoricTaskInstanceDto> listTaskInstances(
       String processInstanceId, String taskDefinitionKey, String assignee, Integer firstResult, Integer maxResults) {
-    HistoricTaskInstanceQuery q = historyService.createHistoricTaskInstanceQuery().orderByHistoricTaskInstanceStartTime().desc();
+    HistoricTaskInstanceQuery q = historyService.createHistoricTaskInstanceQuery();
     if (processInstanceId != null && !processInstanceId.isBlank()) {
       q.processInstanceId(processInstanceId);
     }

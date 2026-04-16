@@ -28,6 +28,10 @@ camunda.bpm:
     schema-update: true
     jdbc-batch-processing: true
 
+camunda:
+  parity:
+    forward-enabled: true
+
 springdoc:
   api-docs:
     path: /v3/api-docs

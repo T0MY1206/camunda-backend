@@ -11,8 +11,8 @@ import java.util.Map;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceQuery;
-import org.camunda.bpm.engine.variable.VariableValue;
 import org.camunda.bpm.engine.variable.Variables;
+import org.camunda.bpm.engine.variable.value.TypedValue;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,7 +80,7 @@ public class CamundaProcessInstanceService {
       pi =
           runtimeService
               .createProcessInstanceByKey(key)
-              .tenantId(tenantId)
+              .processDefinitionTenantId(tenantId)
               .businessKey(businessKey)
               .setVariables(vars)
               .execute();
@@ -109,14 +109,13 @@ public class CamundaProcessInstanceService {
       if (v == null) {
         continue;
       }
-      VariableValue<?> vv = toVariableValue(v);
+      TypedValue vv = toVariableValue(v);
       map.putValue(e.getKey(), vv);
     }
     return map;
   }
 
-  @SuppressWarnings("unchecked")
-  private VariableValue<?> toVariableValue(VariableValueDto v) {
+  private TypedValue toVariableValue(VariableValueDto v) {
     String type = v.type() != null ? v.type() : "String";
     return switch (type) {
       case "Integer" -> Variables.integerValue((Integer) v.value());
@@ -125,7 +124,7 @@ public class CamundaProcessInstanceService {
       case "Boolean" -> Variables.booleanValue((Boolean) v.value());
       case "Short" -> Variables.shortValue(v.value() != null ? ((Number) v.value()).shortValue() : null);
       case "Date" -> Variables.dateValue(v.value() instanceof Date d ? d : null);
-      case "Object" -> Variables.objectValue(v.value());
+      case "Object" -> Variables.objectValue(v.value()).create();
       default -> Variables.stringValue(v.value() != null ? v.value().toString() : null);
     };
   }

@@ -14,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = DeploymentController.class)
+@TestPropertySource(properties = "camunda.parity.forward-enabled=false")
 class DeploymentControllerTest {
 
   @Autowired private MockMvc mockMvc;

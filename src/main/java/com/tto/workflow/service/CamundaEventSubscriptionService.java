@@ -26,7 +26,7 @@ public class CamundaEventSubscriptionService {
       String eventName,
       Integer firstResult,
       Integer maxResults) {
-    EventSubscriptionQuery q = runtimeService.createEventSubscriptionQuery().orderById().asc();
+    EventSubscriptionQuery q = runtimeService.createEventSubscriptionQuery();
     if (processInstanceId != null && !processInstanceId.isBlank()) {
       q.processInstanceId(processInstanceId);
     }

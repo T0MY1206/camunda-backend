@@ -39,7 +39,7 @@ public interface CamundaDtoMapper {
   @Mapping(target = "suspended", source = "suspended")
   ProcessInstanceDto toProcessInstanceDto(ProcessInstance pi);
 
-  @Mapping(target = "activityId", source = "activityId")
+  @Mapping(target = "activityId", ignore = true)
   ExecutionDto toExecutionDto(Execution e);
 
   @Mapping(target = "createTime", expression = "java(formatDate(task.getCreateTime()))")
