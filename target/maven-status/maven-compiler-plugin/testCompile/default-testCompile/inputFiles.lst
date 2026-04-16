@@ -1,0 +1,5 @@
+/workspace/src/test/java/com/tto/workflow/api/v1/camunda/deployment/DeploymentControllerTest.java
+/workspace/src/test/java/com/tto/workflow/api/v1/camunda/processdefinition/ProcessDefinitionControllerTest.java
+/workspace/src/test/java/com/tto/workflow/api/v1/custom/CamundaParityMatrixControllerTest.java
+/workspace/src/test/java/com/tto/workflow/api/v1/custom/CamundaParityOpenApiControllerTest.java
+/workspace/src/test/java/com/tto/workflow/api/v1/custom/CustomStatusControllerTest.java

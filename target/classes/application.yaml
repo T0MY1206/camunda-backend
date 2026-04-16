@@ -1,5 +1,56 @@
-spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5432/postgres?sslmode=disable}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:sa}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+  sql:
+    init:
+      mode: never
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+    show-sql: false
 
-camunda.bpm.admin-user:
-  id: demo
-  password: demo
+camunda.bpm:
+  admin-user:
+    id: demo
+    password: demo
+  database:
+    schema-update: true
+    jdbc-batch-processing: true
+
+camunda:
+  parity:
+    forward-enabled: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+
+logging:
+  level:
+    org.camunda: INFO
+    org.springframework.boot: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: manual-schema
+camunda:
+  bpm:
+    database:
+      schema-update: false

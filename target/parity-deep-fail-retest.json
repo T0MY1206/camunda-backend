@@ -1,0 +1,104 @@
+{
+  "context": {
+    "processDefinitionId": "camundaV1-process:1:655d1093-39ce-11f1-9c0a-00155d69e740",
+    "processInstanceId": "9ec7db42-39ce-11f1-9c0a-00155d69e740",
+    "executionId": "9ec7db42-39ce-11f1-9c0a-00155d69e740",
+    "taskId": "9ec82967-39ce-11f1-9c0a-00155d69e740",
+    "deploymentId": "654e91a1-39ce-11f1-9c0a-00155d69e740",
+    "resourceId": "654f06d2-39ce-11f1-9c0a-00155d69e740",
+    "deletableTaskId": "9ee21a0a-39ce-11f1-9c0a-00155d69e740"
+  },
+  "results": [
+    {
+      "method": "GET",
+      "path": "/deployment/654e91a1-39ce-11f1-9c0a-00155d69e740/resources/654f06d2-39ce-11f1-9c0a-00155d69e740/data",
+      "status": 200,
+      "ok": true,
+      "sample": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\""
+    },
+    {
+      "method": "GET",
+      "path": "/execution/9ec7db42-39ce-11f1-9c0a-00155d69e740/localVariables",
+      "status": 200,
+      "ok": true,
+      "sample": "{\"smokeVar\":{\"type\":\"String\",\"value\":\"ok\",\"valueInfo\":{}}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/execution/9ec7db42-39ce-11f1-9c0a-00155d69e740/localVariables/smokeVar",
+      "status": 204,
+      "ok": true,
+      "sample": ""
+    },
+    {
+      "method": "GET",
+      "path": "/execution/9ec7db42-39ce-11f1-9c0a-00155d69e740/localVariables/smokeVar",
+      "status": 404,
+      "ok": true,
+      "sample": "{\"type\":\"InvalidRequestException\",\"message\":\"execution variable with name smokeVar does not exist\",\"code\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/execution/9ec7db42-39ce-11f1-9c0a-00155d69e740/localVariables/smokeVar/data",
+      "status": 404,
+      "ok": true,
+      "sample": "{\"type\":\"InvalidRequestException\",\"message\":\"execution variable with name smokeVar does not exist\",\"code\":null}"
+    },
+    {
+      "method": "PUT",
+      "path": "/group/camunda-admin/members/demo",
+      "status": 500,
+      "ok": false,
+      "sample": "{\"type\":\"ProcessEnginePersistenceException\",\"message\":\"An exception occurred in the persistence layer. Please check the server logs for a detailed message and the entire exception "
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/9ec7db42-39ce-11f1-9c0a-00155d69e740/variables",
+      "status": 200,
+      "ok": true,
+      "sample": "{}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/process-instance/9ec7db42-39ce-11f1-9c0a-00155d69e740/variables/smokeVar",
+      "status": 204,
+      "ok": true,
+      "sample": ""
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/9ec7db42-39ce-11f1-9c0a-00155d69e740/variables/smokeVar",
+      "status": 404,
+      "ok": true,
+      "sample": "{\"type\":\"InvalidRequestException\",\"message\":\"process instance variable with name smokeVar does not exist\",\"code\":null}"
+    },
+    {
+      "method": "GET",
+      "path": "/process-instance/9ec7db42-39ce-11f1-9c0a-00155d69e740/variables/smokeVar/data",
+      "status": 404,
+      "ok": true,
+      "sample": "{\"type\":\"InvalidRequestException\",\"message\":\"process instance variable with name smokeVar does not exist\",\"code\":null}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/task/9ee21a0a-39ce-11f1-9c0a-00155d69e740",
+      "status": 204,
+      "ok": true,
+      "sample": ""
+    },
+    {
+      "method": "PUT",
+      "path": "/tenant/tenant-a/group-members/camunda-admin",
+      "status": 500,
+      "ok": false,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"No tenant found with id 'tenant-a'.: tenant is null\",\"code\":0}"
+    },
+    {
+      "method": "PUT",
+      "path": "/tenant/tenant-a/user-members/demo",
+      "status": 500,
+      "ok": false,
+      "sample": "{\"type\":\"NullValueException\",\"message\":\"No tenant found with id 'tenant-a'.: tenant is null\",\"code\":0}"
+    }
+  ]
+}

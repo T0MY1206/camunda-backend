@@ -1,0 +1,75 @@
+---
+baseURL: "/manual/7.24/"
+languageCode: "en-us"
+title: "Camunda 7 documentation"
+theme: "camunda"
+
+blackfriday:
+  plainIDAnchors: true
+
+params:
+  canonicalBasePath: "https://docs.camunda.org"
+  sections:
+    - id: "get-started"
+      name: "Get Started"
+      url: "/get-started"
+    - id: "manual"
+      name: "Camunda 7"
+      url: "/manual"
+    - id: "optimize"
+      name: "Optimize"
+      url: "/optimize"
+    - id: 'cawemo'
+      name: 'Cawemo'
+      url: '/cawemo'
+    - id: "enterprise"
+      name: "Enterprise"
+      url: "/enterprise"
+    - id: "security"
+      name: "Security"
+      url: "/security"
+  section:
+    id: "manual"
+    version: "7.24"
+    versionAlias: "7.24"
+    versions:
+      - "7.24"
+      - "7.23"
+      - "7.22"
+      - "7.21"
+      - "7.20"
+      - "7.19"
+      - "7.18"
+      - "7.17"
+      - "7.16"
+      - "7.15"
+      - "7.14"
+      - "7.13"
+      - "7.12"
+      - "7.11"
+      - "7.10"
+      - "7.9"
+      - "7.8"
+      - "7.7"
+      - "7.6"
+      - "7.5"
+      - "7.4"
+      - "7.3"
+      - "7.2"
+      - "7.1"
+      - "7.0"
+  github:
+    repositoryName: "camunda/camunda-docs-manual"
+    branch: "7.24"
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+  section:
+    - "HTML"
+
+disableKinds:
+- taxonomy
+- taxonomyTerm
+...
